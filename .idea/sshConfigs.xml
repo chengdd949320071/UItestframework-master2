@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" id="b2eb9468-b4f8-48c2-b2e2-0da434fb93ab" customName="https://gitlab.example.com" nameFormat="CUSTOM" />
+    </configs>
+  </component>
+</project>
