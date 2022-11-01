@@ -41,6 +41,7 @@ class Pages(basepage.Page):
         sleep(5)
 
 class Actions(basepage.Page):
+    logger = Log()
     def mylogin(self):
         """登录"""
         self.dr.take_screenshot(project_path + '\\1-login.png')
@@ -53,6 +54,7 @@ class Actions(basepage.Page):
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[2]/div[1]/button')
         sleep(5)
         self.dr.take_screenshot(project_path + '\\2-firstpage.png')
+        sleep(1)
 
     def buy_in(self):
         """现行版选择产品买入"""
@@ -299,6 +301,14 @@ class Actions(basepage.Page):
         self.dr.click('xpath->//*[@id="app"]/div/div/div[3]/div/div[2]/div[3]/div/div/div[3]/div')
         sleep(2)
 
-class Checkies (basepage.Page):
     def loginresult(self):
-        self.dr.click('xpath->//*[@id="app"]/div/div/div[3]/div/div[2]/div[3]/div/div/div[1]/div')
+        # 登录后页面展示总资产字样
+        Totalassert=self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[2]/div[1]/div[1]')
+        # 登录后页面展示某日收益日期字样
+        Profitdate=self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[2]/div[2]/div[1]')
+        Profitdate=Profitdate[:5]
+        assert Totalassert == "总资产(元)", '登录后没有展示总资产字样是不正确的'
+        self.logger.info('####### 当前取到的收益日期为'+Profitdate+' ###############################')
+        return Profitdate
+
+

@@ -8,9 +8,9 @@ from time import sleep
 from public.common import datainfo
 from public.pages.PCtest import Actions
 
-
 class CaitongchenjianApp(mytest.MyTesth):
     logger = Log()
+    # 首页收益日期，用于后面判断用
 
     def test01_login(self):
         """H5进入登录页，登录"""
@@ -21,6 +21,8 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         pages2.mylogin()
+        # 校验登录结果
+        pages2.loginresult()
         self.logger.info('############################### 进入首页页面结束 ###############################')
 
     def test02_buyin(self):
