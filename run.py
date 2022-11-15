@@ -8,7 +8,7 @@ from public.common import sendmail
 
 def run():
     test_dir = './testcase'
-    suite = unittest.defaultTestLoader.discover(start_dir=test_dir,pattern='test_a*.py')
+    suite = unittest.defaultTestLoader.discover(start_dir=test_dir,pattern='test*.py')
 
     now = time.strftime('%Y-%m-%d_%H_%M_%S')
     reportname = globalparam.report_path + '\\' + 'TestResult' + now + '.html'
