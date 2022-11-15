@@ -428,7 +428,7 @@ class Actions(basepage.Page):
             result2 = '基金名称:' + product_Name_02[j].text + '|基金代码:' + product_Code[j].text + '|基金类型：' + product_type[j].text  + '|风险等级:'+ product_rand[j].text + '|单位净值:'+ product_nav[j].text + '|累计净值:'+ product_navtotal[j].text+ '|昨日增长率:'+ product_dayInc[j].text + '|近一周增长率:'+ product_weekInc[j].text + '|近一月增长率:' + product_monthInc[j].text +'|近一年增长率:'+product_yearInc[j].text
             self.logger.info(result2)
         # 统计当前产品总数量，并通过产品数鲁和原先是否一致来校验是否有产品新增
-        assert num == 106, 'not equal'
+        assert num == 108, '统计当前产品总数量，并通过产品数鲁和原先是否一致来校验是否有产品新增'
 
 
     # 测试财鑫宝页面，页面元素检查（财鑫宝名称、总金额、近七日年化、万份收益）
