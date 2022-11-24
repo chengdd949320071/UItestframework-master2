@@ -46,21 +46,21 @@ class Actions(basepage.Page):
         """登录"""
         self.dr.take_screenshot(project_path + '\\1-login.png')
         self.dr.type('xpath->//*[@id="van-field-2-input"]', '15158171649')
-        sleep(3)
-        self.dr.type('xpath->//*[@id="van-field-4-input"]', 'Qwer123456')
-        sleep(3)
-        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[1]/div/div/i')
-        sleep(3)
-        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[2]/div[1]/button')
         sleep(5)
+        self.dr.type('xpath->//*[@id="van-field-4-input"]', 'Qwer123456')
+        sleep(5)
+        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[1]/div/div/i')
+        sleep(5)
+        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[2]/div[1]/button')
+        sleep(8)
         self.dr.take_screenshot(project_path + '\\2-firstpage.png')
-        sleep(1)
+        sleep(5)
 
     def buy_in(self):
         """现行版选择产品买入"""
         # 点顶部搜索框
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[1]/div/div')
-        sleep(3)
+        sleep(5)
         # 选择第二个产品买入，当前是鸿福短债007915
         # self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[2]')
         # 选择第三个产品买入，当前是鸿达债券005307
@@ -69,12 +69,13 @@ class Actions(basepage.Page):
         # 点击买入按钮
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[6]/div[2]/div[2]/div[2]/button')
         # 买入页买个10000
+        sleep(5)
         self.dr.type('xpath->//*[@id="app"]/div/div/div/div[3]/div[3]/div[2]/input', '1')
-        sleep(1)
+        sleep(5)
         # 选中协议签署
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[6]/img')
         # 点确认按钮
-        sleep(2)
+        sleep(5)
         self.dr.click('xpath->//*[@id="app"]/div/div/div[1]/div[7]/div/div/button')
         sleep(15)
         # 点我知道了按钮
