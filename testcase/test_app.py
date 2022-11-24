@@ -26,7 +26,7 @@ class CaitongchenjianApp(mytest.MyTesth):
         self.logger.info('############################### 进入首页页面结束 ###############################')
 
     def test02_buyin(self):
-        """H5买入产品鸿福短债007915"""
+        """H5买入产品005307"""
         pages = APPtest.Pages(self.hdr)
         # 进入首页页面
         pages.into_firstpage()
@@ -39,7 +39,7 @@ class CaitongchenjianApp(mytest.MyTesth):
         self.logger.info('############################### 进入买入操作结束 ###############################')
 
     def test03_buyincash(self):
-        """H5买入产品鸿福短债007915-线下汇款"""
+        """H5买入产品005307-线下汇款"""
         pages = APPtest.Pages(self.hdr)
         # 进入首页页面
         pages.into_firstpage()
