@@ -62,7 +62,9 @@ class Actions(basepage.Page):
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[1]/div/div')
         sleep(3)
         # 选择第二个产品买入，当前是鸿福短债007915
-        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[2]')
+        # self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[2]')
+        # 选择第三个产品买入，当前是鸿达债券005307
+        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[3]')
         sleep(5)
         # 点击买入按钮
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[6]/div[2]/div[2]/div[2]/button')
@@ -88,7 +90,9 @@ class Actions(basepage.Page):
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[1]/div/div')
         sleep(3)
         # 选择第二个产品买入，当前是鸿福短债007915
-        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[2]')
+        # self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[2]')
+        # 选择第三个产品买入，当前是鸿达债券005307
+        self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div/div[2]/div[3]')
         sleep(5)
         # 点击买入按钮
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[6]/div[2]/div[2]/div[2]/button')
