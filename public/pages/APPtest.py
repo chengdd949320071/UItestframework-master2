@@ -42,10 +42,10 @@ class Pages(basepage.Page):
 
 class Actions(basepage.Page):
     logger = Log()
-    def mylogin(self):
+    def mylogin(self,account):
         """登录"""
         self.dr.take_screenshot(project_path + '\\1-login.png')
-        self.dr.type('xpath->//*[@id="van-field-2-input"]', '15158171649')
+        self.dr.type('xpath->//*[@id="van-field-2-input"]', account)
         sleep(5)
         self.dr.type('xpath->//*[@id="van-field-4-input"]', 'Qwer123456')
         sleep(5)

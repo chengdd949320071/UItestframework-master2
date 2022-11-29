@@ -1,12 +1,13 @@
 #coding=utf-8
 import time
+import random
+
 from public.common import mytest, basepage
 from public.common import mydate
 from public.pages import APPtest
 from public.common.log import Log
 from time import sleep
 from public.common import datainfo
-from public.pages.PCtest import Actions
 
 class CaitongchenjianApp(mytest.MyTesth):
     logger = Log()
@@ -20,7 +21,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         # 点击立即登录按钮，跳转登录页之后进行登录操作
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         # 校验登录结果
         pages2.loginresult()
         self.logger.info('############################### 进入首页页面结束 ###############################')
@@ -32,7 +35,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入买入操作 ###############################')
         # 点击顶部搜索框买入搜索基金
         pages2.buy_in()
@@ -45,7 +50,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入线下汇款操作 ###############################')
         # 点击顶部搜索框买入搜索基金
         pages2.buy_incash()
@@ -58,7 +65,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入财鑫宝页面 ###############################')
         # 点击财鑫宝页面TAB进入财鑫宝页面
         pages.into_wallet()
@@ -73,7 +82,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入财鑫宝页面 ###############################')
         # 点击财鑫宝页面TAB进入财鑫宝页面
         pages.into_wallet()
@@ -88,7 +99,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入财鑫宝页面 ###############################')
         # 点击财鑫宝页面TAB进入财鑫宝页面
         pages.into_wallet()
@@ -103,7 +116,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入我的页面 ###############################')
         # 点击我的页面TAB进入我的页面
         pages.into_my()
@@ -126,7 +141,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入我的页面 ###############################')
         # 点击我的页面TAB进入我的页面
         pages.into_my()
@@ -149,7 +166,9 @@ class CaitongchenjianApp(mytest.MyTesth):
         pages.into_firstpage()
         pages2 = APPtest.Actions(self.hdr)
         # 登录
-        pages2.mylogin()
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
         self.logger.info('############################### 进入我的页面 ###############################')
         # 点击我的页面TAB进入我的页面
         pages.into_my()
