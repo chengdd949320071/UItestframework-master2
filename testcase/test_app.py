@@ -41,6 +41,8 @@ class CaitongchenjianApp(mytest.MyTesth):
         self.logger.info('############################### 进入买入操作 ###############################')
         # 点击顶部搜索框买入搜索基金
         pages2.buy_in()
+        # 买入成功页面的元素获取判断
+        test02buyinresult=pages2.buyinresult()
         self.logger.info('############################### 进入买入操作结束 ###############################')
 
     def test03_buyincash(self):

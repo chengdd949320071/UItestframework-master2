@@ -83,7 +83,7 @@ class Actions(basepage.Page):
         sleep(5)
         self.input_tradepassword()
         sleep(5)
-        self.dr.quit()
+
 
     def buy_incash(self):
         """现行版选择产品买入-线下汇款"""
@@ -316,4 +316,21 @@ class Actions(basepage.Page):
         self.logger.info('####### 当前取到的收益日期为'+Profitdate+' ###############################')
         return Profitdate
 
+    def buyinresult(self):
+        # 获取交易结果页页面元素增加判断
+        # 扣款状态
+        Koukuanstatus = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[1]')
+        # 买入产品金额
+        Koukuanapplyamount = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[2]/div/div/div[1]/div[2]')
+        # 买入产品名称
+        Koukuanapplyname = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[2]/div/div/div[2]/div[2]')
+        # 页面上的下单时间
+        Applytime = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[2]')
+        assert Koukuanstatus == '扣款成功', '要是不成功扣款交易就是出问题了'
+        # 操作流水日志打印
+        self.logger.info(
+            '#####' + Applytime + '， 当前买入产品为：' + Koukuanapplyname + ' ，买入金额是' + Koukuanapplyamount + '###############################')
+        # 设置返回一个结果数组
+        buyinresults = [Koukuanstatus,Applytime,Koukuanapplyname,Koukuanapplyamount]
+        return buyinresults
 
