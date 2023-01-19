@@ -41,6 +41,17 @@ def get_url_data(title):
 	txtdict = dict([txt.strip().replace('\ufeff','').split('=>') for txt in txtcontent])
 	return txtdict[title]
 
+def get_txt_to_data():
+	"""
+	读取txt文件，转化成数组返回
+	{'title1':'url1','下单':'/admin/order/index'}
+	"""
+	name = 'fundcode.txt'
+	txtpath = os.path.join(data_path,name)
+	file=open(txtpath)
+	file_dates=file.readlines()
+	return file_dates
+
 def get_xls_to_list(excelname, sheetname):
 	"""
 	读取excel表，返回一个list,只是返回第一列的值

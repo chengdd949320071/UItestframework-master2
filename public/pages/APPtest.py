@@ -14,6 +14,11 @@ class Pages(basepage.Page):
         sleep(5)
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[2]/div[2]')
 
+    def into_findproductdetailbfundcode(self, fundcode):
+        """直接跳转产品持有详情"""
+        self.dr.open('https://www.ctzg.com/hy5/#/my-product-detail?fundCode=' + fundcode + '&elder=false')
+        sleep(5)
+
 
     def into_wallet(self):
         """点财鑫宝TAB"""
