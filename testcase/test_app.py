@@ -1,6 +1,7 @@
 #coding=utf-8
 import time
 import random
+from datetime import datetime
 
 from public.common import mytest, basepage
 from public.common import mydate
@@ -10,8 +11,9 @@ from time import sleep
 from public.common import datainfo
 
 class CaitongchenjianApp(mytest.MyTesth):
-    logger = Log()
     # 首页收益日期，用于后面判断用
+    logger = Log()
+    # 汇款开关
 
     def test01_login(self):
         """H5进入登录页，登录"""
@@ -45,20 +47,6 @@ class CaitongchenjianApp(mytest.MyTesth):
         test02buyinresult=pages2.buyinresult()
         self.logger.info('############################### 进入买入操作结束 ###############################')
 
-    def test03_buyincash(self):
-        """H5买入产品005307-线下汇款"""
-        pages = APPtest.Pages(self.hdr)
-        # 进入首页页面
-        pages.into_firstpage()
-        pages2 = APPtest.Actions(self.hdr)
-        # 登录
-        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
-        account = random.choice(datas)
-        pages2.mylogin(account)
-        self.logger.info('############################### 进入线下汇款操作 ###############################')
-        # 点击顶部搜索框买入搜索基金
-        pages2.buy_incash()
-        self.logger.info('############################### 进入线下汇款操作结束 ###############################')
 
     def test04_walletcharge(self):
         """H5进入财鑫宝充值"""
@@ -185,3 +173,38 @@ class CaitongchenjianApp(mytest.MyTesth):
         self.logger.info('############################### 进入转换页面-转换开始 ###############################')
         pages2.tradetransinout()
         self.logger.info('############################### 进入转换页面-转换结束 ###############################')
+
+    #   汇款操作改成定时任务形式
+    def test10_buyincash_task(self):
+        now = datetime.now()
+        ts = now.strftime("%Y-%m-%d %H:%M:%S")
+        self.logger.info("当前时间：" + ts)
+
+    def test10_buyincash(self):
+        """线下汇款的定时任务控制"""
+        curr_time = datetime.now()
+        time_str = int(curr_time.strftime("%H"))
+        #控制在9点到15点之间进行交易
+        while time_str < 9 or time_str > 15:
+            self.test03_buyincash_task()
+            time.sleep(60)
+            curr_time = datetime.now()
+            time_str = int(curr_time.strftime("%H"))
+        # self.test03_buyincash2()
+
+    def test10_buyincash2(self):
+        """H5买入产品005307-线下汇款"""
+        pages = APPtest.Pages(self.hdr)
+        # 进入首页页面
+        pages.into_firstpage()
+        pages2 = APPtest.Actions(self.hdr)
+        # 登录
+        datas = datainfo.get_xls_to_list('searKey.xlsx', 'Sheet1')
+        account = random.choice(datas)
+        pages2.mylogin(account)
+        self.logger.info('############################### 进入线下汇款操作 ###############################')
+        # 点击顶部搜索框买入搜索基金
+        pages2.buy_incash()
+        # 汇款校验
+        buyincashresult=pages2.buyincashresult()
+        self.logger.info('############################### 进入线下汇款操作结束 ###############################')

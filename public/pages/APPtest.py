@@ -100,21 +100,22 @@ class Actions(basepage.Page):
         sleep(3)
         # 点击线下汇款TAB
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[2]/div[2]')
+        sleep(5)
         # 买入页买个100000
         self.dr.type('xpath->//*[@id="app"]/div/div/div/div[3]/div[3]/div[2]/input', '200000')
-        sleep(1)
+        sleep(5)
         # 选中协议签署
         self.dr.click('xpath->//*[@id="app"]/div/div/div/div[6]/img')
         # 点确认按钮
-        sleep(2)
+        sleep(5)
         self.dr.click('xpath->//*[@id="app"]/div/div/div[1]/div[7]/div/div/button')
         sleep(15)
         # 点我知道了按钮
         self.dr.click('xpath->//*[@id="app"]/div/div/div[3]/div/div[3]/div/div/button')
         sleep(5)
         self.input_tradepassword()
-        sleep(5)
-        self.dr.quit()
+        sleep(8)
+#       self.dr.quit()
 
     def wallet_charge(self):
         """首页登录后点财鑫宝充值按钮"""
@@ -334,3 +335,21 @@ class Actions(basepage.Page):
         buyinresults = [Koukuanstatus,Applytime,Koukuanapplyname,Koukuanapplyamount]
         return buyinresults
 
+
+    def buyincashresult(self):
+        # 获取汇款结果页页面元素增加判断
+        Huikuanstatus = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[1]')
+        # 汇款申请的产品名称
+        Huikuanapply = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[1]/div[2]')
+        # 汇款户名
+        Huikuanaccountname = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]')
+        # 汇款账户
+        Huikuanaccount = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[2]/div[3]/div[2]/div[1]')
+        # 汇款开户行
+        Huikuanaccountbank = self.dr.get_text('xpath->//*[@id="app"]/div/div/div/div[1]/div[2]/div[4]/div[2]/div')
+        assert Huikuanstatus == '汇款申请提交成功', '要是不成功汇款申请就是出问题了'
+        assert Huikuanaccountname == '财通证券资产管理有限公司', '汇款户名不正确'
+        assert Huikuanaccount == '1202 0207 2992 0316 866', '汇款账户不正确'
+        assert Huikuanaccountbank == '中国工商银行杭州解放路支行', '汇款开户行不正确'
+        # 设置返回一个结果数组
+        buyincashresult = [Huikuanstatus,Huikuanapply,Huikuanaccountname,Huikuanaccount,Huikuanaccountbank]
