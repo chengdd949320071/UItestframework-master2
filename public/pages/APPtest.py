@@ -352,4 +352,5 @@ class Actions(basepage.Page):
         assert Huikuanaccount == '1202 0207 2992 0316 866', '汇款账户不正确'
         assert Huikuanaccountbank == '中国工商银行杭州解放路支行', '汇款开户行不正确'
         # 设置返回一个结果数组
-        buyincashresult = [Huikuanstatus,Huikuanapply,Huikuanaccountname,Huikuanaccount,Huikuanaccountbank]
+        buyincashresults = [Huikuanstatus,Huikuanapply,Huikuanaccountname,Huikuanaccount,Huikuanaccountbank]
+        return buyincashresults
